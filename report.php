@@ -18,7 +18,7 @@ $query = "SELECT trim(trim(trim(notes.sfld, CHAR(10)), '&nbsp;')) AS word,
             ORDER BY word,
                      revision_time;";
 
-$csv = 'Word,Last Revision,Percent Correct,Repetitions,Lapses';
+$csv = "Word,Last Revision,Percent Correct,Repetitions,Lapses\n";
 
 $html = '<table>';
 $html .= '<tr><th>Word</th><th>Last Revision</th><th>Percent Correct</th><th>Repetitions</th><th>Lapses</th></tr>';

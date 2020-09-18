@@ -76,4 +76,4 @@ foreach($words AS $word) {
 $html .= '</table>';
 
 file_put_contents('report.html', $html);
-file_put_contents('report.csv', $html);
+file_put_contents('report.csv', $csv);

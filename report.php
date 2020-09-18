@@ -13,8 +13,8 @@ $query = "SELECT trim(trim(trim(notes.sfld, CHAR(10)), '&nbsp;')) AS word,
                    cards.reps AS repetitions,
                    cards.lapses AS lapses
             FROM cards
-            INNER JOIN notes ON cards.nid = notes.id
-            INNER JOIN revlog ON cards.id = revlog.cid
+            LEFT OUTER JOIN notes ON cards.nid = notes.id
+            LEFT OUTER JOIN revlog ON cards.id = revlog.cid
             ORDER BY word,
                      revision_time;";
 
@@ -69,7 +69,7 @@ foreach($words AS &$word) {
 }
 
 foreach($words AS $word) {
-    $csv .= $word['word'].','.$word['last_revision'].','.$word['percent_correct'].','.$word['repetitions'].','.$word['lapses']."\n";
+    $csv .= '"'.str_replace('"', '""', $word['word']).'",'.$word['last_revision'].','.$word['percent_correct'].','.$word['repetitions'].','.$word['lapses']."\n";
     $html .= '<tr><td>'.$word['word'].'</td><td>'.$word['last_revision'].'</td><td>'.$word['percent_correct'].'</td><td>'.$word['repetitions'].'</td><td>'.$word['lapses'].'</td></tr>';
 }
 
